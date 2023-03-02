@@ -3,6 +3,7 @@ do LinkedIn que podem ser incorporadas em um arquivo HTML
 */
 
 var links_linkedin = [
+  "7037079991947288576", /* O poder das redes - 02/03/2023*/
   "7022271123706777600", 
   "7024842071240781824",
   "7034961869631033344",
