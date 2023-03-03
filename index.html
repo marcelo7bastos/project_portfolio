@@ -237,7 +237,7 @@
 								</section>
 								-->
 
-							<!-- Projetos de Portfólio em Ciências de Dados -->
+							<!-- Projetos de Portfólio em Ciências de Dados
 							<section>
 								<header class="major">
 									<h2>Projetos em Ciência de Dados</h2>
@@ -305,9 +305,25 @@
 											<li><a href="#" class="button">More</a></li>
 										</ul>
 									</article>
-									-->
+
+								</div>
+							</section>									-->
+
+<!-- Criação da seção para projetos de portfólio envolvendo Tecnologia e Inovação -->
+							<section id="projetos-data-science">
+								<div class="inner">
+									<header class="major">
+										<h2>Projetos em Ciência de Dados</h2>
+									</header>
+									<div class="posts"></div>
 								</div>
 							</section>
+
+
+
+
+
+
 
 
 								<!-- Projetos de Portfólio envolvendo Tecnologia e Inovação -->
@@ -420,6 +436,28 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script src="project_data_science.js"></script>
+			
+
+			<script>
+			$(document).ready(function() {
+				var projetosDataScience = projetos;
+				$.each(projetosDataScience, function(key, value) {
+					var projeto = '<article>' +
+													'<h3>' + value.titulo + '</h3>' +
+													'<a href="' + value.link + '" target="_blank" class="image"><img src="' + value.imagem + '" alt="" /></a>' +
+													'<p>' + value.descricao + '</p>' +
+													'<h4>Ferramentas Utilizadas</h4>' +
+													'<ul><li>' + value.ferramenta + '</li></ul>' +
+													'<ul class="actions">' +
+														'<li><a href="' + value.link + '" target="_blank" class="button">Saiba mais</a></li>' +
+													'</ul>' +
+												'</article>';
+					$('#projetos-data-science .posts').append(projeto);
+				});
+			});
+			</script>
+			
 
 
 
