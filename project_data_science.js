@@ -20,4 +20,11 @@ var projetos = {
     "imagem": "images/analise-dados-inguagem-r-curso-enap.jpg",
     "link": "https://www.linkedin.com/posts/marcelo-cabreira-bastos_pdi-aprendizagem-cienciadedados-activity-7036912312930181120-nUko?utm_source=share&utm_medium=member_desktop"
   }
+  "projeto4": {
+    "titulo": "Teste Portais cadastrados",
+    "descricao": "Esse é um teste de portais cadastrados no PNCP.",
+    "ferramenta": "Power BI",
+    "imagem": "images/analise-dados-inguagem-r-curso-enap.jpg",
+    "link": "https://app.powerbi.com/view?r=eyJrIjoiNTc5NmI3YjktNTU1Ny00MDg1LThiZjgtZDhiMDc1ODZmNzZkIiwidCI6IjNlYzkyOTY5LTVhNTEtNGYxOC04YWM5LWVmOThmYmFmYTk3OCJ9"
+  }
 };
