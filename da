@@ -1,0 +1,91 @@
+[33mcommit 27e7c53f3b3de12738b6211dcd24df21f6b4d79b[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: Marcelo7Bastos <marceloc.bastos@hotmail.com>
+Date:   Thu May 11 14:54:31 2023 -0300
+
+    teste de portais pncp
+
+[33mcommit 5b1350dd4f03dc1fa6c0ff1e6bad93541106a785[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Marcelo7Bastos <marceloc.bastos@hotmail.com>
+Date:   Fri Mar 3 18:03:23 2023 -0300
+
+    Refactor code to improve readability and add clickable links to project descriptions. Update project information, including new links for project 2 and 3.
+
+[33mcommit 2770bd395210af228c4f1f18dd44db4cfa47d820[m
+Author: Marcelo Bastos <47831197+marcelo7bastos@users.noreply.github.com>
+Date:   Fri Mar 3 16:17:53 2023 -0300
+
+    Update links.js
+
+[33mcommit bbe40b0d51708c1cec171c5338c67220495abd23[m
+Author: Marcelo Bastos <47831197+marcelo7bastos@users.noreply.github.com>
+Date:   Thu Mar 2 12:25:18 2023 -0300
+
+    Update links.js
+
+[33mcommit 90d1f4594d3809857b0e3dd0960e9d4d3bde9168[m
+Author: Marcelo Bastos <47831197+marcelo7bastos@users.noreply.github.com>
+Date:   Wed Mar 1 19:07:39 2023 -0300
+
+    Update index.html
+
+[33mcommit ae37e423443b51d3f3bf7ee89364678e35d90354[m
+Author: Marcelo Bastos <47831197+marcelo7bastos@users.noreply.github.com>
+Date:   Wed Mar 1 19:04:18 2023 -0300
+
+    Update index.html
+
+[33mcommit 694430b2a6740219b79da14631c2cccab89fe020[m
+Author: Marcelo Bastos <47831197+marcelo7bastos@users.noreply.github.com>
+Date:   Wed Mar 1 19:01:12 2023 -0300
+
+    Add files via upload
+
+[33mcommit 57d22a9a17d85a2cb7ece36cc60a0994ec07b601[m
+Author: Marcelo7Bastos <marceloc.bastos@hotmail.com>
+Date:   Sun Feb 26 23:37:02 2023 -0300
+
+    Update image size limits on banner section.
+
+[33mcommit 9b36349ee7b9280d8549f21241c52c6d0866023b[m[33m ([m[1;32mautomatizacao_links_linkedin[m[33m)[m
+Author: Marcelo7Bastos <marceloc.bastos@hotmail.com>
+Date:   Sun Feb 26 23:10:38 2023 -0300
+
+    Update banner and contact section on index.html. Add badge to banner and align it with the profile picture. Remove dashed line between contact items and reduce the spacing. Implement a loop to display articles and posts and create links file.
+
+[33mcommit 9edae74eeb8ca4403fbf90f6e25e2fec5071e0dd[m
+Merge: 4e1646a ef709cf
+Author: Marcelo Bastos <47831197+marcelo7bastos@users.noreply.github.com>
+Date:   Sat Feb 25 14:05:46 2023 -0300
+
+    Merge pull request #2 from marcelo7bastos/test_iframe_linkedin
+    
+    Update index.html
+
+[33mcommit ef709cf7e1cae2c079bc5df42d07a8c7b87ee776[m[33m ([m[1;31morigin/test_iframe_linkedin[m[33m)[m
+Author: Marcelo Bastos <47831197+marcelo7bastos@users.noreply.github.com>
+Date:   Sat Jan 28 11:11:05 2023 -0300
+
+    Update index.html
+    
+    acréscimo da divisão para post dos artigos
+
+[33mcommit 4e1646a492a9a1f8ee7f88e6657ecf693a8c525e[m
+Merge: aaba359 c390e05
+Author: Marcelo Bastos <47831197+marcelo7bastos@users.noreply.github.com>
+Date:   Tue Jan 10 15:57:55 2023 -0300
+
+    Merge pull request #1 from marcelo7bastos/marcelo7bastos-correção-ortografica
+    
+    Update index.html
+
+[33mcommit c390e05d260c1fef63d38604a2b1bd9d66031b13[m[33m ([m[1;31morigin/marcelo7bastos-correção-ortografica[m[33m)[m
+Author: Marcelo Bastos <47831197+marcelo7bastos@users.noreply.github.com>
+Date:   Tue Jan 10 15:57:00 2023 -0300
+
+    Update index.html
+
+[33mcommit aaba359c0ac7017fd9580864e0d9f0ccff96050e[m
+Author: Marcelo Bastos <47831197+marcelo7bastos@users.noreply.github.com>
+Date:   Sun Jan 8 21:09:15 2023 -0300
+
+    first commit
