@@ -19,5 +19,12 @@ var projetos = {
     "ferramenta": "R, RStudio, RMarkdown, Shiny",
     "imagem": "images/analise-dados-inguagem-r-curso-enap.jpg",
     "link": "https://www.linkedin.com/posts/marcelo-cabreira-bastos_pdi-aprendizagem-cienciadedados-activity-7036912312930181120-nUko?utm_source=share&utm_medium=member_desktop"
+  },
+  "projeto4": {
+  "titulo": "chatPNCP - Portal Nacional de Contratações Públicas",
+  "descricao": "chatPNCP é um assistente digital avançado criado para facilitar a navegação e utilização do Portal Nacional de Contratações Públicas (PNCP) do Brasil. Equipado com tecnologia OpenAI, ele orienta os usuários por meio de informações gerais sobre o PNCP, acesso a dados e documentos, instruções de uso, atualizações de funcionalidades, processo de credenciamento e suporte técnico. Além disso, inclui integração com o Postman para expandir suas capacidades de interação. Para mais detalhes, acesse o projeto no Postman.",
+  "ferramenta": "Python, APIs, OpenAI, Postman [https://www.postman.com/solar-resonance-722686/workspace/chatpncp-public/collection/29812398-110f66f0-586d-442e-a402-5f50f8c65f3c?action=share&creator=29812398], Colab, VScode",
+  "imagem": "images/image_chatPNCP.jpg",
+  "link": "https://chat-pncp.streamlit.app/"
   }
 };
