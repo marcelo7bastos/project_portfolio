@@ -26,5 +26,12 @@ var projetos = {
   "ferramenta": "Python, APIs, OpenAI, Postman , Colab, VScode",
   "imagem": "images/image_chatPNCP.jpg",
   "link": "https://chat-pncp.streamlit.app/"
+  },
+  "projeto5": {
+  "titulo": "Apresentação de trabalho no openDATA SEGES 2024",
+  "descricao": "Projeto visa criar um ranking dos itens com maior volume financeiro previsto para 2023 no sistema PGC - Planejamento e Gerenciamento de Contratações. A análise explora dados abertos do Compras Públicas do Governo Federal, usando Python e Jupyter Notebook para desvendar tendências e otimizar processos de compras e contratações. A iniciativa destaca a importância da eficiência, economicidade e transparência nas contratações públicas, aderindo estritamente aos dados disponibilizados pelo Governo Federal.",
+  "ferramenta": "Python, Jupyter Notebook, Análise de Dados",
+  "imagem": "images/open-datasets-seges%20(1).png",
+  "link": "https://github.com/marcelo7bastos/dados_aberto_pgc_pca/blob/main/pgc_pca_itens_apresentacao.ipynb"
   }
 };
