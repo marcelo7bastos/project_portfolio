@@ -22,7 +22,7 @@ var projetos = {
   },
   "projeto4": {
   "titulo": "POC - chatPNCP - Portal Nacional de Contratações Públicas",
-  "descricao": "O chatPNCP é um assistente digital criado para facilitar a utilização do Portal Nacional de Contratações Públicas (PNCP) do Brasil. Vale-se das APIs disponibilizadas pela OpenAI e testadas no Postman <a href='https://www.postman.com/solar-resonance-722686/workspace/chatpncp-public/collection/29812398-110f66f0-586d-442e-a402-5f50f8c65f3c?action=share&creator=29812398' target='_blank'>Postman do projeto</a>. Utilizou-se da linguagem python e, para publicação, do Streamlit.",
+  "descricao": "O chatPNCP é um assistente digital criado para facilitar a utilização do Portal Nacional de Contratações Públicas (PNCP) do Brasil. Vale-se das APIs disponibilizadas pela OpenAI e testadas no Postman <a href='https://www.postman.com/solar-resonance-722686/workspace/chatpncp-public/collection/29812398-110f66f0-586d-442e-a402-5f50f8c65f3c?action=share&creator=29812398' target='_blank'>(link para projeto)</a>. Utilizou-se da linguagem python e, para publicação, do Streamlit.",
   "ferramenta": "Python, APIs, OpenAI, Postman , Colab, VScode",
   "imagem": "images/image_chatPNCP.jpg",
   "link": "https://chat-pncp.streamlit.app/"
