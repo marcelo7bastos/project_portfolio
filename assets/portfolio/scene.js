@@ -2,7 +2,7 @@ import * as THREE from './vendor/three.module.min.js';
 
 // A small, original workshop made entirely from geometric primitives.
 // No remote assets, photographs, models or personal data are used here.
-export function createWorkshop(container, { onSelect = () => {}, reducedMotion = false } = {}) {
+export function createWorkshop(container, { onSelect = () => {}, reducedMotion = false, labels = {} } = {}) {
   const scene = new THREE.Scene();
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'low-power' });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.7));
@@ -273,7 +273,7 @@ export function createWorkshop(container, { onSelect = () => {}, reducedMotion =
   ].map((data) => {
     const button = document.createElement('button');
     button.type = 'button'; button.className = `room-hotspot room-hotspot--${data.id}`;
-    button.textContent = data.text; button.setAttribute('aria-label', `Explorar ${data.text.toLocaleLowerCase('pt-BR')}`);
+    button.textContent = labels[data.id]?.text ?? data.text; button.setAttribute('aria-label', labels[data.id]?.label ?? `Explorar ${data.text.toLocaleLowerCase('pt-BR')}`);
     button.style.position = 'absolute'; button.style.zIndex = '2'; button.style.transform = 'translate(-50%,-50%)';
     button.addEventListener('click', () => onSelect(data.id)); container.appendChild(button);
     return { ...data, button };

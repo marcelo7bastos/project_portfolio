@@ -1,4 +1,4 @@
-const projects = [
+const primaryProjects = [
   {id:'inflacao',category:'dados',title:'Da inflação ao que importa.',name:'Painéis de inflação (IPCA e IPCA-15)',tag:'DADOS & POLÍTICAS PÚBLICAS',status:'Painéis web · publicados',art:'chart',featured:true,summary:'Dados do IPCA e IPCA-15 organizados para explorar preços, grupos e períodos.',lead:'Uma pergunta econômica precisa de uma forma clara de ser explorada.',context:'O trabalho aproxima indicadores oficiais de uma experiência de consulta: navegação por competência, boletins, gráficos e leitura dos grupos de produtos e serviços.',contribution:'Construção e evolução das análises em Power BI e de uma camada web de exploração, conectadas à preparação e à documentação dos dados.',learning:'Um painel também é uma interface: a forma de organizar o período, a hierarquia e a comparação muda a leitura da informação.',note:'As séries e os valores oficiais estão nos painéis vinculados.',links:[['Abrir IPCA','https://marcelo7bastos.github.io/macroeconomia-agricultura-familiar/docs/gestao/ipca.html'],['Abrir IPCA-15','https://marcelo7bastos.github.io/macroeconomia-agricultura-familiar/docs/gestao/ipca15.html'],['Projeto no GitHub','https://github.com/marcelo7bastos/macroeconomia-agricultura-familiar']]},
   {
     id: 'pu',
@@ -47,17 +47,95 @@ const projects = [
 
 const featuredOrder = ['pu', 'chat-pronaf', 'inflacao', 'oficina', 'jogos'];
 
-const categories={dados:{title:'Dados que ajudam a perguntar melhor.',label:'Dados & políticas públicas',description:'Análises, engenharia de dados e decisões de método. Histórias sobre transformar registros em informação útil.'},ia:{title:'Construir, testar e continuar aprendendo.',label:'IA & experimentos',description:'Pesquisa, interfaces e rotinas. Cada projeto tem seu próprio estado: estudo, teste, evolução ou relato descritivo.'},aprender:{title:'Aprender também é compartilhar.',label:'Aprender & compartilhar',description:'Oficinas, curadoria, métodos e narrativas visuais. Formas de aproximar conhecimento e experiência.'},pessoal:{title:'Pelo prazer de fazer.',label:'Brincadeiras & curiosidade',description:'Pequenos projetos com uma motivação pessoal. Os jogos para minha filha são parte deste laboratório.'}};
+const primaryCategories={dados:{title:'Dados que ajudam a perguntar melhor.',label:'Dados & políticas públicas',description:'Análises, engenharia de dados e decisões de método. Histórias sobre transformar registros em informação útil.'},ia:{title:'Construir, testar e continuar aprendendo.',label:'IA & experimentos',description:'Pesquisa, interfaces e rotinas. Cada projeto tem seu próprio estado: estudo, teste, evolução ou relato descritivo.'},aprender:{title:'Aprender também é compartilhar.',label:'Aprender & compartilhar',description:'Oficinas, curadoria, métodos e narrativas visuais. Formas de aproximar conhecimento e experiência.'},pessoal:{title:'Pelo prazer de fazer.',label:'Brincadeiras & curiosidade',description:'Pequenos projetos com uma motivação pessoal. Os jogos para minha filha são parte deste laboratório.'}};
+
+
+const portuguese = {
+  "illustration": "ILUSTRAÇÃO CONCEITUAL",
+  "details": "Ver detalhes",
+  "detailsOf": " de ",
+  "openArchive": "Abrir as outras gavetas",
+  "closeArchive": "Fechar as outras gavetas",
+  "projectCount": "{count} trabalhos",
+  "announcement": "{count} trabalhos em {category}.",
+  "allCategories": "todas as categorias",
+  "result": "Resultado.",
+  "contribution": "Minha contribuição",
+  "learning": "O que levo comigo",
+  "method": "Método",
+  "finding": "O que o estudo encontrou",
+  "advisor": "Orientação.",
+  "citation": "Como citar (ABNT)",
+  "available": "Disponível em:",
+  "accessed": "Acesso em:",
+  "accessDate": "24 nov. 2026.",
+  "exploreLab": "EXPLORE O LABORATÓRIO",
+  "pause": "Pausar movimento",
+  "resume": "Retomar movimento",
+  "night": "Modo noturno",
+  "day": "Voltar ao modo diurno",
+  "gameTag": "UMA MINI BRINCADEIRA PARA EXPERIMENTAR",
+  "gameTitle": "Vamos montar kits iguais?",
+  "gameIntro": "Temos <strong>12 flores</strong> e <strong>18 doces</strong>. Qual é o maior número de kits iguais que podemos montar, usando tudo?",
+  "gameGroup": "Escolha a quantidade de kits",
+  "gameOption": "{count} kits",
+  "gameInitial": "Experimente uma resposta. O raciocínio importa tanto quanto acertar.",
+  "gameCorrect": "Isso! 6 kits, cada um com 2 flores e 3 doces. Seis é o maior divisor comum de 12 e 18.",
+  "gameTryAgain": "Dá para montar essa quantidade de kits iguais. Mas será que conseguimos um número maior, sem sobrar nada?",
+  "exploreData": "Explorar dados",
+  "exploreAI": "Explorar IA",
+  "exploreLearn": "Explorar aprendizagem",
+  "explorePlay": "Explorar jogos",
+  "roomData": "Dados",
+  "roomAI": "IA",
+  "roomLearn": "Aprender",
+  "roomPlay": "Brincar",
+  "chartHeader": "EXPLORAR / INFLAÇÃO",
+  "puHeader": "UMA PERGUNTA SOBRE RÓTULOS",
+  "observed": "OBSERVADO",
+  "unlabeled": "NÃO ROTULADO",
+  "chatLine1": "Por onde começar a explorar",
+  "chatLine2": "os dados do Pronaf?",
+  "workshopHeader": "SEMANA DE INOVAÇÃO · ENAP",
+  "workshopTools": "DADOS ABERTOS + PYTHON + IA",
+  "gameCover": "MISSÃO: KITS DA FESTA",
+  "gameCoverFooter": "APRENDER BRINCANDO"
+};
+
+const language = document.documentElement.lang.split('-')[0];
+const localeModules = {
+  en: () => import('./locale-en.js?v=dad8a52436c2'),
+  es: () => import('./locale-es.js?v=9d619babba3c'),
+};
+const loadLocale = localeModules[language];
+const copy = loadLocale ? (await loadLocale()).default : null;
+const categories = copy?.categories ?? primaryCategories;
+
+function t(key, values = {}) {
+  const message = copy?.ui[key] ?? portuguese[key];
+  return message.replace(/\{(\w+)\}/g, (_, name) => String(values[name]));
+}
+
+const projects = primaryProjects.map(project => {
+  const translation = copy?.projects[project.id];
+  if (!translation) return project;
+  const {linkLabels, ...content} = translation;
+  return {
+    ...project,
+    ...content,
+    links: project.links?.map(([label, url], index) => [linkLabels?.[index] ?? label, url]),
+  };
+});
 
 function graphic(kind){
  const open='<svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">';
  const paper='#f6f3e8',ink='#304d42',orange='#be6549',line='#9cac91';
  let s='';
- if(kind==='chart')s=`<rect width="400" height="220" fill="#dce6da"/><rect x="37" y="27" width="326" height="160" rx="5" fill="${paper}" stroke="#b0c1a5"/><rect x="37" y="27" width="326" height="24" rx="4" fill="${ink}"/><circle cx="48" cy="39" r="2" fill="#edb670"/><circle cx="56" cy="39" r="2" fill="#8aab8a"/><text x="72" y="42" font-size="7" fill="${paper}" font-family="monospace">EXPLORAR / INFLAÇÃO</text><path d="M65 84H337M65 111H337M65 138H337M65 165H337" stroke="#dfe4d5" stroke-width="1"/><path d="M67 141L95 136L123 148L152 105L181 119L209 86L238 108L267 82L295 94L333 66" fill="none" stroke="${orange}" stroke-width="3" stroke-linecap="round"/><path d="M67 156L95 150L123 153L152 142L181 144L209 129L238 137L267 117L295 123L333 112" fill="none" stroke="#7d9e84" stroke-width="2"/><circle cx="267" cy="82" r="5" fill="${orange}" stroke="${paper}" stroke-width="2"/>`;
- if(kind==='pu'){s=`<rect width="400" height="220" fill="#e8e2d5"/><circle cx="151" cy="107" r="65" fill="#d3dcc7"/><circle cx="246" cy="107" r="65" fill="#e6b498" fill-opacity=".42"/><text x="88" y="30" font-family="monospace" font-size="7" fill="${ink}">UMA PERGUNTA SOBRE RÓTULOS</text>`;for(let i=0;i<37;i++){const x=89+(i*43%229),y=56+(i*31%108);s+=`<circle cx="${x}" cy="${y}" r="${i%5===0?4:3}" fill="${i%5===0?orange:paper}" stroke="${i%5===0?orange:'#94a18c'}"/>`;}s+=`<rect x="105" y="181" width="7" height="7" rx="3" fill="${orange}"/><text x="119" y="188" font-size="7" fill="${ink}" font-family="monospace">OBSERVADO</text><circle cx="220" cy="185" r="3" fill="${paper}" stroke="${line}"/><text x="231" y="188" font-size="7" fill="${ink}" font-family="monospace">NÃO ROTULADO</text>`;}
- if(kind==='chat')s=`<rect width="400" height="220" fill="#e3dfd0"/><rect x="58" y="25" width="284" height="166" rx="8" fill="${paper}" stroke="#b5bea5"/><rect x="58" y="25" width="284" height="32" rx="8" fill="${ink}"/><circle cx="77" cy="41" r="6" fill="#adc198"/><text x="92" y="44" font-size="9" fill="${paper}" font-family="monospace">chat / pronaf</text><rect x="131" y="71" width="193" height="34" rx="7" fill="#d6e1cf"/><text x="142" y="86" font-size="8" fill="${ink}" font-family="sans-serif">Por onde começar a explorar</text><text x="142" y="96" font-size="8" fill="${ink}" font-family="sans-serif">os dados do Pronaf?</text><circle cx="78" cy="124" r="9" fill="${orange}"/><path d="M99 121H299M99 131H278M99 141H228" stroke="#b1bca3" stroke-width="3" stroke-linecap="round"/><rect x="76" y="159" width="248" height="20" rx="4" fill="#eeeede"/><path d="M86 169H178" stroke="#b8bfaa"/><path d="M310 165L315 169L310 173" fill="none" stroke="${ink}"/>`;
- if(kind==='workshop')s=`<rect width="400" height="220" fill="#d4dece"/><g transform="rotate(-5 200 110)"><rect x="66" y="31" width="268" height="156" rx="3" fill="${orange}"/><path d="M269 31V187" stroke="#ead1b3" stroke-dasharray="3 4"/><text x="85" y="57" font-size="8" fill="${paper}" font-family="monospace" letter-spacing="1">SEMANA DE INOVAÇÃO · ENAP</text><text x="82" y="122" font-size="66" fill="${paper}" font-family="Georgia">SI / 25</text><text x="86" y="148" font-size="10" fill="${paper}" font-family="monospace">HACKEANDO O PRONAF</text><text x="86" y="165" font-size="7" fill="#eacfaf" font-family="monospace">DADOS ABERTOS + PYTHON + IA</text><path d="M283 64V159M288 64V159M297 64V159M302 64V159M310 64V159M316 64V159" stroke="#eec9a8" stroke-width="2"/></g>`;
- if(kind==='game')s=`<rect width="400" height="220" fill="#e8dac7"/><g transform="rotate(6 200 110)"><rect x="102" y="24" width="196" height="173" rx="13" fill="#566b4f"/><rect x="114" y="35" width="172" height="94" rx="5" fill="#243f35"/><rect x="124" y="44" width="152" height="74" rx="2" fill="#cbd69a"/><text x="139" y="65" font-size="8" fill="#536743" font-family="monospace">MISSÃO: KITS DA FESTA</text><path d="M139 80H260M139 98H260" stroke="#a4b475"/>${[0,1,2,3,4,5].map(i=>`<rect x="${143+i*20}" y="76" width="12" height="12" rx="2" fill="#748955"/>`).join('')}<text x="148" y="109" font-size="8" fill="#536743" font-family="monospace">APRENDER BRINCANDO</text><path d="M145 143V169M132 156H158" stroke="#e0d8b7" stroke-width="9"/><circle cx="247" cy="149" r="10" fill="#c5815d"/><circle cx="224" cy="166" r="10" fill="#ddaf77"/><path d="M185 178H202" stroke="#a5b08c" stroke-width="4" stroke-linecap="round"/></g>`;
+ if(kind==='chart')s=`<rect width="400" height="220" fill="#dce6da"/><rect x="37" y="27" width="326" height="160" rx="5" fill="${paper}" stroke="#b0c1a5"/><rect x="37" y="27" width="326" height="24" rx="4" fill="${ink}"/><circle cx="48" cy="39" r="2" fill="#edb670"/><circle cx="56" cy="39" r="2" fill="#8aab8a"/><text x="72" y="42" font-size="7" fill="${paper}" font-family="monospace">\${esc(t("chartHeader"))}</text><path d="M65 84H337M65 111H337M65 138H337M65 165H337" stroke="#dfe4d5" stroke-width="1"/><path d="M67 141L95 136L123 148L152 105L181 119L209 86L238 108L267 82L295 94L333 66" fill="none" stroke="${orange}" stroke-width="3" stroke-linecap="round"/><path d="M67 156L95 150L123 153L152 142L181 144L209 129L238 137L267 117L295 123L333 112" fill="none" stroke="#7d9e84" stroke-width="2"/><circle cx="267" cy="82" r="5" fill="${orange}" stroke="${paper}" stroke-width="2"/>`;
+ if(kind==='pu'){s=`<rect width="400" height="220" fill="#e8e2d5"/><circle cx="151" cy="107" r="65" fill="#d3dcc7"/><circle cx="246" cy="107" r="65" fill="#e6b498" fill-opacity=".42"/><text x="88" y="30" font-family="monospace" font-size="7" fill="${ink}">\${esc(t("puHeader"))}</text>`;for(let i=0;i<37;i++){const x=89+(i*43%229),y=56+(i*31%108);s+=`<circle cx="${x}" cy="${y}" r="${i%5===0?4:3}" fill="${i%5===0?orange:paper}" stroke="${i%5===0?orange:'#94a18c'}"/>`;}s+=`<rect x="105" y="181" width="7" height="7" rx="3" fill="${orange}"/><text x="119" y="188" font-size="7" fill="${ink}" font-family="monospace">\${esc(t("observed"))}</text><circle cx="220" cy="185" r="3" fill="${paper}" stroke="${line}"/><text x="231" y="188" font-size="7" fill="${ink}" font-family="monospace">\${esc(t("unlabeled"))}</text>`;}
+ if(kind==='chat')s=`<rect width="400" height="220" fill="#e3dfd0"/><rect x="58" y="25" width="284" height="166" rx="8" fill="${paper}" stroke="#b5bea5"/><rect x="58" y="25" width="284" height="32" rx="8" fill="${ink}"/><circle cx="77" cy="41" r="6" fill="#adc198"/><text x="92" y="44" font-size="9" fill="${paper}" font-family="monospace">chat / pronaf</text><rect x="131" y="71" width="193" height="34" rx="7" fill="#d6e1cf"/><text x="142" y="86" font-size="8" fill="${ink}" font-family="sans-serif">\${esc(t("chatLine1"))}</text><text x="142" y="96" font-size="8" fill="${ink}" font-family="sans-serif">\${esc(t("chatLine2"))}</text><circle cx="78" cy="124" r="9" fill="${orange}"/><path d="M99 121H299M99 131H278M99 141H228" stroke="#b1bca3" stroke-width="3" stroke-linecap="round"/><rect x="76" y="159" width="248" height="20" rx="4" fill="#eeeede"/><path d="M86 169H178" stroke="#b8bfaa"/><path d="M310 165L315 169L310 173" fill="none" stroke="${ink}"/>`;
+ if(kind==='workshop')s=`<rect width="400" height="220" fill="#d4dece"/><g transform="rotate(-5 200 110)"><rect x="66" y="31" width="268" height="156" rx="3" fill="${orange}"/><path d="M269 31V187" stroke="#ead1b3" stroke-dasharray="3 4"/><text x="85" y="57" font-size="8" fill="${paper}" font-family="monospace" letter-spacing="1">\${esc(t("workshopHeader"))}</text><text x="82" y="122" font-size="66" fill="${paper}" font-family="Georgia">SI / 25</text><text x="86" y="148" font-size="10" fill="${paper}" font-family="monospace">HACKEANDO O PRONAF</text><text x="86" y="165" font-size="7" fill="#eacfaf" font-family="monospace">\${esc(t("workshopTools"))}</text><path d="M283 64V159M288 64V159M297 64V159M302 64V159M310 64V159M316 64V159" stroke="#eec9a8" stroke-width="2"/></g>`;
+ if(kind==='game')s=`<rect width="400" height="220" fill="#e8dac7"/><g transform="rotate(6 200 110)"><rect x="102" y="24" width="196" height="173" rx="13" fill="#566b4f"/><rect x="114" y="35" width="172" height="94" rx="5" fill="#243f35"/><rect x="124" y="44" width="152" height="74" rx="2" fill="#cbd69a"/><text x="139" y="65" font-size="8" fill="#536743" font-family="monospace">\${esc(t("gameCover"))}</text><path d="M139 80H260M139 98H260" stroke="#a4b475"/>${[0,1,2,3,4,5].map(i=>`<rect x="${143+i*20}" y="76" width="12" height="12" rx="2" fill="#748955"/>`).join('')}<text x="148" y="109" font-size="8" fill="#536743" font-family="monospace">\${esc(t("gameCoverFooter"))}</text><path d="M145 143V169M132 156H158" stroke="#e0d8b7" stroke-width="9"/><circle cx="247" cy="149" r="10" fill="#c5815d"/><circle cx="224" cy="166" r="10" fill="#ddaf77"/><path d="M185 178H202" stroke="#a5b08c" stroke-width="4" stroke-linecap="round"/></g>`;
  return open+s+'</svg>';
 }
 
@@ -75,13 +153,13 @@ function card(project) {
   const links = project.links?.slice(0, linkCount) || [];
   return '<article class="project-card">' +
     '<div class="project-art">' + graphic(project.art) +
-    '<span class="art-caption">ILUSTRAÇÃO CONCEITUAL</span></div>' +
+    '<span class="art-caption">' + esc(t('illustration')) + '</span></div>' +
     '<div class="project-card-copy"><div class="project-kicker">' + esc(project.tag) + '</div>' +
     '<h3>' + esc(project.name) + '</h3><p class="project-subtitle">' + esc(project.title) + '</p>' +
     '<p>' + esc(project.summary) + '</p><span class="project-status">' + esc(project.status) + '</span>' +
     resultMarkup(project) +
     '<div class="project-actions">' + externalLinks(links) +
-    '<button type="button" data-project="' + esc(project.id) + '">Ver detalhes<span class="sr-only"> de ' + esc(project.name) + '</span></button>' +
+    '<button type="button" data-project="' + esc(project.id) + '">' + esc(t('details')) + '<span class="sr-only">' + esc(t('detailsOf') + project.name) + '</span></button>' +
     '</div></div></article>';
 }
 
@@ -94,8 +172,8 @@ function renderProjects(){
  const list=projects.filter(p=>selectedFilter==='todos'||p.category===selectedFilter),high=featuredOrder.map(id=>list.find(p=>p.id===id)).filter(Boolean),others=list.filter(p=>!p.featured);
  featured.innerHTML=high.map(card).join(''); archive.innerHTML=others.map(smallCard).join('');
  archive.hidden=!archiveOpen||!others.length;archiveToggle.hidden=!others.length;
- archiveToggle.setAttribute('aria-expanded',String(archiveOpen));archiveToggle.innerHTML=`${archiveOpen?'Fechar as outras gavetas':'Abrir as outras gavetas'} <span>${others.length} trabalhos</span><span aria-hidden="true">${archiveOpen?'↑':'↓'}</span>`;
- document.querySelector('#filter-announcement').textContent=`${list.length} trabalhos em ${selectedFilter==='todos'?'todas as categorias':categories[selectedFilter].label}.`;
+ archiveToggle.setAttribute('aria-expanded',String(archiveOpen));archiveToggle.innerHTML=`${esc(t(archiveOpen?'closeArchive':'openArchive'))} <span>${esc(t('projectCount', {count: others.length}))}</span><span aria-hidden="true">${archiveOpen?'↑':'↓'}</span>`;
+ document.querySelector('#filter-announcement').textContent=t('announcement', {count: list.length, category: selectedFilter === 'todos' ? t('allCategories') : categories[selectedFilter].label});
  document.querySelector('#total-count').textContent=projects.length;
  document.querySelectorAll('[data-filter]').forEach(b=>{b.classList.toggle('active',b.dataset.filter===selectedFilter);b.setAttribute('aria-pressed',String(b.dataset.filter===selectedFilter));});
 }
@@ -106,29 +184,29 @@ function showDialog(content){
  dialog.scrollTop=0;document.querySelector('#dialog-close').focus();
 }
 function closeDialog(){dialog.close();document.body.classList.remove('body-dialog-open');lastFocus?.focus();}
-function gameMarkup(){return `<div class="demo-console"><p class="eyebrow">UMA MINI BRINCADEIRA PARA EXPERIMENTAR</p><h3>Vamos montar kits iguais?</h3><p>Temos <strong>12 flores</strong> e <strong>18 doces</strong>. Qual é o maior número de kits iguais que podemos montar, usando tudo?</p><div class="game-objects" aria-hidden="true">✿ ✿ ✿ ✿ ✿ ✿<br>✿ ✿ ✿ ✿ ✿ ✿<br>● ● ● ● ● ● ● ● ●<br>● ● ● ● ● ● ● ● ●</div><div class="game-options" role="group" aria-label="Escolha a quantidade de kits"><button data-answer="2">2 kits</button><button data-answer="3">3 kits</button><button data-answer="6">6 kits</button></div><p class="game-feedback" id="game-feedback" aria-live="polite">Experimente uma resposta. O raciocínio importa tanto quanto acertar.</p></div>`;}
+function gameMarkup(){return `<div class="demo-console"><p class="eyebrow">${esc(t("gameTag"))}</p><h3>${esc(t("gameTitle"))}</h3><p>${t("gameIntro")}</p><div class="game-objects" aria-hidden="true">✿ ✿ ✿ ✿ ✿ ✿<br>✿ ✿ ✿ ✿ ✿ ✿<br>● ● ● ● ● ● ● ● ●<br>● ● ● ● ● ● ● ● ●</div><div class="game-options" role="group" aria-label="${esc(t("gameGroup"))}"><button data-answer="2">${esc(t("gameOption", {count: 2}))}</button><button data-answer="3">${esc(t("gameOption", {count: 3}))}</button><button data-answer="6">${esc(t("gameOption", {count: 6}))}</button></div><p class="game-feedback" id="game-feedback" aria-live="polite">${esc(t("gameInitial"))}</p></div>`;}
 
 function resultMarkup(project) {
-  return project.result ? '<p class="project-result"><strong>Resultado.</strong> ' + esc(project.result) + '</p>' : '';
+  return project.result ? '<p class="project-result"><strong>' + esc(t('result')) + '</strong> ' + esc(project.result) + '</p>' : '';
 }
 
 function formatCitation(citation, chapterUrl) {
   return '<section class="dialog-section article-citation" aria-labelledby="citation-title">' +
-    '<h3 id="citation-title">Como citar (ABNT)</h3><p>' + esc(citation.chapter) +
+    '<h3 id="citation-title">' + esc(t('citation')) + '</h3><p lang="pt-BR">' + esc(citation.chapter) +
     ' In: ' + esc(citation.editors) + ' <cite>' + esc(citation.book) + '</cite> ' +
-    esc(citation.publication) + ' Disponível em: <a href="' + esc(chapterUrl) + '">' +
-    esc(chapterUrl) + '</a>. Acesso em: ' + esc(citation.access) + '</p></section>';
+    esc(citation.publication) + ' </p><p>' + esc(t('available')) + ' <a href="' + esc(chapterUrl) + '">' +
+    esc(chapterUrl) + '</a>. ' + esc(t('accessed')) + ' ' + esc(t('accessDate')) + '</p></section>';
 }
 
 function articleDetails(project) {
   const detail = '<div class="dialog-columns">' +
-    '<section><h3>Minha contribuição</h3><p>' + esc(project.contribution) + '</p></section>' +
-    '<section><h3>' + (project.method ? 'Método' : 'O que levo comigo') + '</h3><p>' +
+    '<section><h3>' + esc(t('contribution')) + '</h3><p>' + esc(project.contribution) + '</p></section>' +
+    '<section><h3>' + esc(t(project.method ? 'method' : 'learning')) + '</h3><p>' +
     esc(project.method || project.learning) + '</p></section></div>';
   if (!project.citation) return detail;
   return detail +
-    '<section class="dialog-section"><h3>O que o estudo encontrou</h3><p>' + esc(project.finding) + '</p></section>' +
-    '<p><strong>Orientação.</strong> ' + esc(project.advisor) + '</p>' +
+    '<section class="dialog-section"><h3>' + esc(t('finding')) + '</h3><p>' + esc(project.finding) + '</p></section>' +
+    '<p><strong>' + esc(t('advisor')) + '</strong> ' + esc(project.advisor) + '</p>' +
     formatCitation(project.citation, project.links[0][1]);
 }
 
@@ -137,7 +215,7 @@ function showProject(id) {
   if (!project) return;
 
   const illustration = project.art && !project.citation
-    ? '<div class="dialog-art project-art"><span class="art-caption">ILUSTRAÇÃO CONCEITUAL</span>' + graphic(project.art) + '</div>'
+    ? '<div class="dialog-art project-art"><span class="art-caption">' + esc(t('illustration')) + '</span>' + graphic(project.art) + '</div>'
     : '';
   const links = project.links ? '<div class="dialog-links">' + externalLinks(project.links) + '</div>' : '';
   showDialog('<article class="dialog-content">' + illustration +
@@ -151,22 +229,22 @@ function showProject(id) {
 function showCategory(id){
  const c=categories[id];if(!c)return;
  const list=projects.filter(p=>p.category===id);
- showDialog(`<section class="dialog-content"><p class="eyebrow">EXPLORE O LABORATÓRIO / ${c.label}</p><h2 id="dialog-title">${c.title}</h2><p class="dialog-lead">${c.description}</p><div class="room-group">${list.map(p=>`<button data-project="${p.id}"><span>${p.name}<small>${p.status}</small></span><span aria-hidden="true">→</span></button>`).join('')}</div></section>`);
+ showDialog(`<section class="dialog-content"><p class="eyebrow">${esc(t("exploreLab"))} / ${esc(c.label)}</p><h2 id="dialog-title">${c.title}</h2><p class="dialog-lead">${c.description}</p><div class="room-group">${list.map(p=>`<button data-project="${p.id}"><span>${p.name}<small>${p.status}</small></span><span aria-hidden="true">→</span></button>`).join('')}</div></section>`);
 }
 document.addEventListener('click',event=>{
  const target=event.target.closest('button');if(!target)return;
  if(target.dataset.project)showProject(target.dataset.project);
  else if(target.dataset.room)showCategory(target.dataset.room);
  else if(target.dataset.filter){selectedFilter=target.dataset.filter;archiveOpen=selectedFilter!=='todos';renderProjects();}
- else if(target.dataset.answer){const n=Number(target.dataset.answer);document.querySelector('#game-feedback').textContent=n===6?'Isso! 6 kits, cada um com 2 flores e 3 doces. Seis é o maior divisor comum de 12 e 18.':'Dá para montar essa quantidade de kits iguais. Mas será que conseguimos um número maior, sem sobrar nada?';}
+ else if(target.dataset.answer){const n=Number(target.dataset.answer);document.querySelector('#game-feedback').textContent=t(n===6?'gameCorrect':'gameTryAgain');}
 });
 archiveToggle.addEventListener('click',()=>{archiveOpen=!archiveOpen;renderProjects();});
 document.querySelector('#dialog-close').addEventListener('click',closeDialog);
 dialog.addEventListener('cancel',event=>{event.preventDefault();closeDialog();});
 dialog.addEventListener('click',event=>{if(event.target===dialog){const r=dialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)closeDialog();}});
-document.querySelector('#day-toggle').addEventListener('click',event=>{night=!night;room?.setNight(night);document.querySelector('#room-shell').classList.toggle('night',night);event.currentTarget.setAttribute('aria-pressed',String(night));event.currentTarget.title=night?'Voltar à luz do dia':'Acender a luz da noite';event.currentTarget.innerHTML=`${night?'☾':'☼'}<span class="sr-only">${night?'Voltar ao modo diurno':'Modo noturno'}</span>`;});
+document.querySelector('#day-toggle').addEventListener('click',event=>{night=!night;room?.setNight(night);document.querySelector('#room-shell').classList.toggle('night',night);event.currentTarget.setAttribute('aria-pressed',String(night));event.currentTarget.title=t(night?'day':'night');event.currentTarget.innerHTML=`${night?'☾':'☼'}<span class="sr-only">${esc(t(night?'day':'night'))}</span>`;});
 const motionButton=document.querySelector('#motion-toggle');
-function updateMotion(){motionButton.setAttribute('aria-pressed',String(paused));motionButton.title=paused?'Retomar movimento':'Pausar movimento';motionButton.innerHTML=`${paused?'▷':'Ⅱ'}<span class="sr-only">${paused?'Retomar':'Pausar'} movimento</span>`;}
+function updateMotion(){motionButton.setAttribute('aria-pressed',String(paused));motionButton.title=t(paused?'resume':'pause');motionButton.innerHTML=`${paused?'▷':'Ⅱ'}<span class="sr-only">${esc(t(paused?'resume':'pause'))}</span>`;}
 motionButton.addEventListener('click',()=>{paused=!paused;room?.setPaused(paused);updateMotion();});
 renderProjects();updateMotion();
 
@@ -176,9 +254,15 @@ const loading = document.querySelector('#room-loading');
 async function loadRoom() {
   stage.setAttribute('aria-busy', 'true');
   try {
-    const {createWorkshop} = await import('./scene.js');
+    const {createWorkshop} = await import('./scene.js?v=694031978c96');
     room = createWorkshop(stage, {
       onSelect: showCategory,
+      labels: {
+        dados: {text: t('roomData'), label: t('exploreData')},
+        ia: {text: t('roomAI'), label: t('exploreAI')},
+        aprender: {text: t('roomLearn'), label: t('exploreLearn')},
+        pessoal: {text: t('roomPlay'), label: t('explorePlay')},
+      },
       reducedMotion: window.matchMedia('(prefers-reduced-motion: reduce)').matches
     });
     room.setPaused(paused);
