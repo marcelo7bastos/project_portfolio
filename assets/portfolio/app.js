@@ -36,7 +36,34 @@ const primaryProjects = [
   {id:'jogos',category:'pessoal',title:'Também construo para brincar.',name:'Jogos de matemática',tag:'PELO PRAZER DE FAZER',status:'Dois jogos publicados',art:'game',featured:true,summary:'Duas pequenas experiências para transformar ideias matemáticas em brincadeira.',lead:'Às vezes, uma boa razão para criar é fazer uma brincadeira para a filha.',context:'Missão Kits da Festa e Tabuada Run exploram matemática com desafios visuais, escolhas e feedback. A motivação é pessoal: aprender e brincar juntos.',contribution:'Construção das experiências, das regras e das interfaces, usando programação para tornar o raciocínio visível.',learning:'Uma explicação melhora quando a outra pessoa pode experimentar a ideia.',note:'A atividade abaixo é uma demonstração independente. Os dois jogos completos estão nos links.',links:[['Missão Kits da Festa','https://marcelo7bastos.github.io/aprendendo-maximo-divisor-comum/'],['Tabuada Run','https://marcelo7bastos.github.io/jogo_tabuada/']]},
   {id:'iris',category:'ia',name:'Íris',title:'Uma assistente, muitas decisões.',tag:'IA & ROTINAS PESSOAIS',status:'Relato descritivo',summary:'Experimentos com integração, memória e rotinas assistidas por IA.',context:'Um projeto pessoal para explorar o apoio de agentes a rotinas e à organização do conhecimento.',contribution:'Configurei a assistente e integrei fluxos, com decisões sobre memória, continuidade e supervisão.',learning:'Automatizar uma rotina inclui pensar em como ela será acompanhada e retomada.',note:'Somente descrição. Sem acesso à assistente, às suas contas, memórias, documentos ou rotinas privadas.'},
   {id:'time-ti',category:'ia',name:'Time de TI com agentes',title:'Aprender a dirigir a construção.',tag:'IA & PROCESSO DE TRABALHO',status:'Teste / experimento',summary:'Papéis, revisão e acompanhamento no desenvolvimento com agentes.',context:'Um experimento de organização do trabalho de agentes em torno de tarefas e entregas revisáveis.',contribution:'Definição de papéis, fluxos e ferramentas de apoio ao processo de implementação e revisão.',learning:'Delegar execução exige continuar responsável pelas decisões e pela conferência.',note:'Apresentado como teste, com limitações. Não expõe configurações privadas nem promete autonomia garantida.'},
-  {id:'eleitoral',category:'dados',name:'Monitor Eleitoral 2026',title:'Dados cívicos, método e contexto.',tag:'DADOS ABERTOS',status:'Projeto encerrado · 2026',summary:'Coleta e organização de dados oficiais em um projeto pessoal independente.',context:'Um exercício de coleta, organização e acompanhamento de dados eleitorais oficiais.',contribution:'Desenvolvimento e análise com colaboração de Ernesto Galindo, preservando origem, referência e registros de execução.',learning:'O contexto e a data de atualização fazem parte de qualquer visualização.',note:'Projeto pessoal independente, encerrado em outubro de 2026. O repositório separa os registros de coleta dos resultados oficiais e o protótipo visual com dados simulados.',links:[['Projeto público no GitHub','https://github.com/marcelo7bastos/monitor-eleitoral-2026']]},
+  {
+    "id": "eleitoral",
+    "category": "dados",
+    "name": "Monitor Eleitoral 2026",
+    "title": "O que dá para aprender enquanto a apuração avança?",
+    "tag": "DADOS ABERTOS",
+    "status": "Projeto independente · 2026 · Encerrado",
+    "result": "Avaliação retrospectiva de 54 coletas do segundo turno.",
+    "summary": "Acompanhamento independente da apuração presidencial brasileira com dados oficiais do TSE.",
+    "context": "O painel reuniu os dados divulgados pelo Tribunal Superior Eleitoral nas 27 unidades federativas e no exterior. A visualização separa a apuração oficial das estimativas calculadas pelo projeto.",
+    "contribution": "Desenvolvimento e análise, com colaboração de Ernesto Galindo. Automatizei a coleta, implementei as estimativas em Python, registrei os horários e analisei a série de atualizações.",
+    "learning": "Na trajetória analisada, a estimativa teve erro absoluto de 0,424 ponto percentual em relação ao último resultado preservado quando 77,701% das seções do segundo turno estavam totalizadas. Esse é um resultado retrospectivo de uma eleição.",
+    "note": "Projeto pessoal independente, encerrado em 26 de outubro de 2026. O painel ficou disponível para consulta histórica.",
+    "links": [
+      [
+        "Painel histórico",
+        "https://marcelo7bastos.github.io/monitor-eleitoral-2026/"
+      ],
+      [
+        "Avaliação retrospectiva",
+        "https://github.com/marcelo7bastos/monitor-eleitoral-2026/blob/main/docs/AVALIACAO_RETROSPECTIVA.md"
+      ],
+      [
+        "Código no GitHub",
+        "https://github.com/marcelo7bastos/monitor-eleitoral-2026"
+      ]
+    ]
+  },
   {id:'alerta',category:'ia',name:'Alerta de Inflação de Alimentos',title:'Um radar para boas perguntas.',tag:'IA & MONITORAMENTO',status:'Projeto em evolução',summary:'Notícias, filtros e classificação para acompanhar um tema.',context:'Uma experiência para organizar notícias relacionadas à inflação de alimentos.',contribution:'Coleta RSS, filtragem, armazenamento e classificação assistida por IA.',learning:'Encontrar uma notícia e produzir um indicador econômico são tarefas distintas.',note:'Descrição do projeto. Sem notícias carregadas, classificações reais ou promessas de recursos futuros já prontos.',links:[['Repositório público','https://github.com/marcelo7bastos/alerta_inflacao']]},
   {id:'compras',category:'dados',name:'Planejamento de compras públicas',title:'O que os dados abertos deixam perguntar?',tag:'DADOS ABERTOS & GESTÃO',status:'Análise',result:'Apresentado no openDATA 2024 da SEGES.',summary:'Exploração de aquisições planejadas em bases PGC/PCA.',context:'Uma análise dos itens e valores previstos no planejamento de compras públicas.',contribution:'Tratamento, exploração e organização dos dados para construção de rankings e comunicação da análise.',learning:'Planejamento de contratação não equivale a despesa executada.',note:'Descrição do trabalho; nenhum dado interno ou registro de pessoa é apresentado.',links:[['Código e materiais públicos','https://github.com/marcelo7bastos/dados_aberto_pgc_pca']]},
   {id:'conversor',category:'dados',name:'Da API à planilha',title:'Uma ferramenta pequena, uma fricção a menos.',tag:'AUTOMAÇÃO PRÁTICA',status:'Trabalho anterior',summary:'Conversor de respostas da API Compras para CSV e Excel.',context:'Levar uma resposta JSON para um formato tabular pode ser uma barreira para começar a análise.',contribution:'Uma aplicação de consulta, prévia e exportação de dados em formatos de planilha.',learning:'Uma solução útil também pode ser pequena e direta.',note:'Relato de um trabalho antigo. A ferramenta não está conectada a nenhuma API neste protótipo.',links:[['Repositório público','https://github.com/marcelo7bastos/api_compras_convert_json_to']]},
@@ -104,8 +131,8 @@ const portuguese = {
 
 const language = document.documentElement.lang.split('-')[0];
 const localeModules = {
-  en: () => import('./locale-en.js?v=dad8a52436c2'),
-  es: () => import('./locale-es.js?v=9d619babba3c'),
+  en: () => import('./locale-en.js?v=d0af16c5ce81'),
+  es: () => import('./locale-es.js?v=eb94b3148670'),
 };
 const loadLocale = localeModules[language];
 const copy = loadLocale ? (await loadLocale()).default : null;

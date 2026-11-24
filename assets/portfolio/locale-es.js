@@ -107,16 +107,19 @@ export default {
     },
     "eleitoral": {
       "name": "Monitor Electoral 2026",
-      "title": "Datos cívicos, método y contexto.",
+      "title": "¿Qué se puede aprender mientras avanza el escrutinio?",
       "tag": "DATOS ABIERTOS",
-      "status": "Proyecto concluido · 2026",
-      "summary": "Un proyecto independiente de recopilación y organización de datos electorales oficiales.",
-      "context": "Un ejercicio personal de recopilación y organización de resultados electorales oficiales.",
-      "contribution": "Desarrollé y analicé el proyecto con la colaboración de Ernesto Galindo y registré las fuentes, los periodos y las ejecuciones.",
-      "learning": "El contexto y la fecha de actualización son parte de cualquier visualización.",
-      "note": "El proyecto independiente terminó en octubre de 2026. El repositorio distingue los registros oficiales recopilados del prototipo visual con datos simulados.",
+      "status": "Proyecto independiente · 2026 · Concluido",
+      "result": "Evaluación retrospectiva de 54 capturas del balotaje.",
+      "summary": "Seguimiento independiente del escrutinio presidencial brasileño con datos oficiales del TSE.",
+      "context": "El panel reunió los datos publicados por el Tribunal Superior Electoral de Brasil (TSE) en las 27 unidades federativas y en el exterior. La visualización distingue el escrutinio oficial de las estimaciones del proyecto.",
+      "contribution": "Desarrollé y analicé el monitor con la colaboración de Ernesto Galindo. Automaticé la recopilación, implementé las estimaciones en Python, registré los horarios y analicé la serie de actualizaciones.",
+      "learning": "En la trayectoria analizada, la estimación tuvo un error absoluto de 0,424 puntos porcentuales frente al último resultado preservado cuando se había totalizado el 77,701 % de las secciones del balotaje. El hallazgo corresponde a un análisis retrospectivo de una elección.",
+      "note": "Proyecto personal independiente, concluido el 26 de octubre de 2026. El panel está disponible para consulta histórica.",
       "linkLabels": [
-        "Repositorio público"
+        "Panel histórico",
+        "Evaluación retrospectiva",
+        "Código en GitHub"
       ]
     },
     "alerta": {

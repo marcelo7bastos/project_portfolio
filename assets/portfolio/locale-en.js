@@ -107,16 +107,19 @@ export default {
     },
     "eleitoral": {
       "name": "2026 Election Monitor",
-      "title": "Civic data, method, and context.",
+      "title": "What can we learn while the votes are being counted?",
       "tag": "OPEN DATA",
-      "status": "Project concluded · 2026",
-      "summary": "An independent project collecting and organizing official election data.",
-      "context": "A personal exercise in collecting and organizing official election results.",
-      "contribution": "I developed and analyzed the project with contributions from Ernesto Galindo, tracking sources, dates, and run history.",
-      "learning": "Context and the last update date are part of any visualization.",
-      "note": "The independent project ended in October 2026. The repository distinguishes official collection records from the visual prototype using simulated data.",
+      "status": "Independent project · 2026 · Concluded",
+      "result": "Retrospective evaluation of 54 runoff snapshots.",
+      "summary": "An independent monitor of Brazil’s presidential vote count using official TSE data.",
+      "context": "The dashboard aggregated data from Brazil’s Superior Electoral Court (TSE) across 27 federal units and overseas voting. It distinguishes the official count from the project’s estimates.",
+      "contribution": "I developed and analyzed the monitor with contributions from Ernesto Galindo. I automated data collection, implemented the estimates in Python, logged timestamps, and examined the series of updates.",
+      "learning": "In the observed timeline, the estimate was within 0.424 percentage points of the last preserved result when 77.701% of runoff polling sections had been tallied. This finding comes from a retrospective analysis of one election.",
+      "note": "An independent personal project concluded on 26 October 2026. The dashboard remains available as a historical record.",
       "linkLabels": [
-        "Public repository"
+        "Historical dashboard",
+        "Retrospective evaluation",
+        "Code on GitHub"
       ]
     },
     "alerta": {
