@@ -120,7 +120,9 @@ export default {
         "Panel histórico",
         "Evaluación retrospectiva",
         "Código en GitHub"
-      ]
+      ],
+      "figureLabel": "Balotaje · datos del panel",
+      "figureAlt": "Porcentajes de votos de Lula y Flávio durante el balotaje. Líneas continuas: resultados oficiales. Líneas discontinuas: estimaciones del monitor."
     },
     "alerta": {
       "name": "Alerta de Inflación de Alimentos",

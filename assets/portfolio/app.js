@@ -39,6 +39,11 @@ const primaryProjects = [
   {
     "id": "eleitoral",
     "category": "dados",
+    "featured": true,
+    "cardLinkCount": 2,
+    "figure": "./monitor-eleitoral-2026.webp",
+    "figureLabel": "2º turno · dados do painel",
+    "figureAlt": "Percentuais de votos de Lula e Flávio ao longo da apuração do segundo turno. Linhas contínuas: resultados oficiais. Linhas tracejadas: estimativas do monitor.",
     "name": "Monitor Eleitoral 2026",
     "title": "O que dá para aprender enquanto a apuração avança?",
     "tag": "DADOS ABERTOS",
@@ -72,7 +77,7 @@ const primaryProjects = [
   {id:'mba',category:'aprender',name:'Pronaf no MBA',title:'Estudar usando uma pergunta concreta.',tag:'FORMAÇÃO & ANÁLISE',status:'Trabalho acadêmico',summary:'Análise estatística, gráficos e apresentação de dados do programa.',context:'Um trabalho de formação que aproxima aprendizagem em dados de uma temática de política pública.',contribution:'Construção de notebook, visualizações e materiais de apresentação sobre o Pronaf.',learning:'Aplicar uma ferramenta a um problema concreto ajuda a entender seus pressupostos e limites.',note:'Descrição acadêmica; não inclui bases ou resultados individuais.',links:[['Materiais públicos','https://github.com/marcelo7bastos/mba_mcdia_est_desc_analise_pronaf']]},
 ];
 
-const featuredOrder = ['pu', 'chat-pronaf', 'inflacao', 'oficina', 'jogos'];
+const featuredOrder = ['pu', 'chat-pronaf', 'inflacao', 'oficina', 'jogos', 'eleitoral'];
 
 const primaryCategories={dados:{title:'Dados que ajudam a perguntar melhor.',label:'Dados & políticas públicas',description:'Análises, engenharia de dados e decisões de método. Histórias sobre transformar registros em informação útil.'},ia:{title:'Construir, testar e continuar aprendendo.',label:'IA & experimentos',description:'Pesquisa, interfaces e rotinas. Cada projeto tem seu próprio estado: estudo, teste, evolução ou relato descritivo.'},aprender:{title:'Aprender também é compartilhar.',label:'Aprender & compartilhar',description:'Oficinas, curadoria, métodos e narrativas visuais. Formas de aproximar conhecimento e experiência.'},pessoal:{title:'Pelo prazer de fazer.',label:'Brincadeiras & curiosidade',description:'Pequenos projetos com uma motivação pessoal. Os jogos para minha filha são parte deste laboratório.'}};
 
@@ -131,8 +136,8 @@ const portuguese = {
 
 const language = document.documentElement.lang.split('-')[0];
 const localeModules = {
-  en: () => import('./locale-en.js?v=d0af16c5ce81'),
-  es: () => import('./locale-es.js?v=eb94b3148670'),
+  en: () => import('./locale-en.js?v=90fb3de9a51b'),
+  es: () => import('./locale-es.js?v=8e2f9c1b0038'),
 };
 const loadLocale = localeModules[language];
 const copy = loadLocale ? (await loadLocale()).default : null;
@@ -175,12 +180,24 @@ function externalLinks(links) {
   return links.map(([label, url]) => '<a href="' + esc(url) + '" target="_blank" rel="noopener noreferrer">' + esc(label) + ' <span aria-hidden="true">↗</span></a>').join('');
 }
 
+
+function projectArt(project, isDialog = false) {
+  if (!project.figure && !project.art) return '';
+  const image = project.figure
+    ? '<img class="project-figure" src="' + esc(new URL(project.figure, import.meta.url).href) +
+      '" width="960" height="510" loading="lazy" decoding="async" alt="' + esc(project.figureAlt) + '">'
+    : graphic(project.art);
+  const caption = project.figureLabel ?? t('illustration');
+  const classes = isDialog ? 'project-art dialog-art' : 'project-art';
+  return '<div class="' + classes + '">' + image +
+    '<span class="art-caption">' + esc(caption) + '</span></div>';
+}
+
 function card(project) {
   const linkCount = project.cardLinkCount ?? (['inflacao', 'jogos'].includes(project.id) ? 2 : 1);
   const links = project.links?.slice(0, linkCount) || [];
   return '<article class="project-card">' +
-    '<div class="project-art">' + graphic(project.art) +
-    '<span class="art-caption">' + esc(t('illustration')) + '</span></div>' +
+    projectArt(project) +
     '<div class="project-card-copy"><div class="project-kicker">' + esc(project.tag) + '</div>' +
     '<h3>' + esc(project.name) + '</h3><p class="project-subtitle">' + esc(project.title) + '</p>' +
     '<p>' + esc(project.summary) + '</p><span class="project-status">' + esc(project.status) + '</span>' +
@@ -241,9 +258,7 @@ function showProject(id) {
   const project = projects.find(item => item.id === id);
   if (!project) return;
 
-  const illustration = project.art && !project.citation
-    ? '<div class="dialog-art project-art"><span class="art-caption">' + esc(t('illustration')) + '</span>' + graphic(project.art) + '</div>'
-    : '';
+  const illustration = project.citation ? '' : projectArt(project, true);
   const links = project.links ? '<div class="dialog-links">' + externalLinks(project.links) + '</div>' : '';
   showDialog('<article class="dialog-content">' + illustration +
     '<p class="eyebrow">' + esc(project.tag) + '</p><h2 id="dialog-title">' + esc(project.name) + '</h2>' +

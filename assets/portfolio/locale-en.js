@@ -120,7 +120,9 @@ export default {
         "Historical dashboard",
         "Retrospective evaluation",
         "Code on GitHub"
-      ]
+      ],
+      "figureLabel": "Runoff · dashboard data",
+      "figureAlt": "Lula and Flávio’s vote shares during the runoff. Solid lines show official results. Dashed lines show the monitor’s estimates."
     },
     "alerta": {
       "name": "Food Inflation Monitor",
