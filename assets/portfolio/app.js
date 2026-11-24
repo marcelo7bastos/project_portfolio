@@ -1,14 +1,44 @@
 const projects = [
   {id:'inflacao',category:'dados',title:'Da inflação ao que importa.',name:'Painéis de inflação (IPCA e IPCA-15)',tag:'DADOS & POLÍTICAS PÚBLICAS',status:'Painéis web · publicados',art:'chart',featured:true,summary:'Dados do IPCA e IPCA-15 organizados para explorar preços, grupos e períodos.',lead:'Uma pergunta econômica precisa de uma forma clara de ser explorada.',context:'O trabalho aproxima indicadores oficiais de uma experiência de consulta: navegação por competência, boletins, gráficos e leitura dos grupos de produtos e serviços.',contribution:'Construção e evolução das análises em Power BI e de uma camada web de exploração, conectadas à preparação e à documentação dos dados.',learning:'Um painel também é uma interface: a forma de organizar o período, a hierarquia e a comparação muda a leitura da informação.',note:'As séries e os valores oficiais estão nos painéis vinculados.',links:[['Abrir IPCA','https://marcelo7bastos.github.io/macroeconomia-agricultura-familiar/docs/gestao/ipca.html'],['Abrir IPCA-15','https://marcelo7bastos.github.io/macroeconomia-agricultura-familiar/docs/gestao/ipca15.html'],['Projeto no GitHub','https://github.com/marcelo7bastos/macroeconomia-agricultura-familiar']]},
-  {id:'pu',category:'ia',title:'E se a ausência não for um “não”?',name:'PU Learning no acesso ao Pronaf',tag:'PESQUISA & IA APLICADA',status:'Capítulo de livro · Enap · 2026',art:'pu',featured:true,summary:'Um estudo sobre aprender com exemplos positivos e dados não rotulados no acesso ao crédito rural.',lead:'Não observar uma contratação não significa conhecer todos os motivos dessa ausência.',context:'O estudo investiga o uso de Positive–Unlabeled Learning para uma pergunta relacionada ao acesso ao Pronaf. A distinção entre positivo observado e dado não rotulado é central para escolher o método.',contribution:'Preparação e integração de dados, comparação de abordagens e análise dos limites de interpretar registros administrativos por meio de modelos.',learning:'O significado do rótulo vem antes do algoritmo. Explicar o que os dados permitem afirmar faz parte da pesquisa.',note:'Capítulo publicado em Análise de dados e IA a serviço da inovação em gestão pública (Enap, 2026, p. 216–231). A reprodução integral depende de acesso autorizado aos microdados do CAF.',links:[['Ler capítulo','https://repositorio.enap.gov.br/server/api/core/bitstreams/e9845237-a877-443c-9637-399191a28a86/content#page=217'],['Registro da Enap','https://repositorio.enap.gov.br/handle/1/10139']]},
+  {
+    id: 'pu',
+    category: 'ia',
+    title: 'E se a ausência não for um “não”?',
+    name: 'PU Learning no acesso ao Pronaf',
+    tag: 'PESQUISA & IA APLICADA',
+    status: 'Capítulo de livro · Enap · 2026',
+    result: 'Publicado em livro da Enap, 2026.',
+    art: 'pu',
+    featured: true,
+    summary: 'Um ranking diagnóstico para investigar lacunas de acesso ao crédito rural. A elegibilidade continua sujeita aos critérios do programa.',
+    lead: 'Um ranking diagnóstico, não uma classificação de elegibilidade.',
+    context: 'O SICOR registra quem contratou. Entre as pessoas sem contratação observada, há situações diferentes, como demanda não formalizada, barreiras de acesso e baixa propensão. O estudo trata esse grupo como não rotulado.',
+    contribution: 'Autoria do artigo: formulação do problema como PU Learning, integração CAF–SICOR, modelagem e análise.',
+    advisor: 'Prof. Dr. Hélio Bonfim de Macêdo Filho',
+    method: 'Comparei um baseline supervisionado, o estimador clássico de Elkan e Noto e o nnPU (aprendizado PU com risco não negativo). Separei treino, validação e teste por família e comparei os modelos usando a contratação observada como referência.',
+    finding: 'O baseline e Elkan e Noto recuperaram proporções semelhantes de positivos observados no topo. O nnPU concentrou menos positivos observados nessa avaliação, que não mede diretamente a classe latente. O ranking apoia diagnóstico de cobertura e busca ativa, com validação humana e observância das regras do Pronaf.',
+    citation: {
+      chapter: 'BASTOS, Marcelo Cabreira. Estimativa de propensão e exclusão no crédito rural: uma abordagem de positive-unlabeled learning e gradient boosting com dados do PRONAF e CAF.',
+      editors: 'DE TONI, Jackson Silvano; DORNELES, Rachel Pereira (org.).',
+      book: 'Análise de dados e IA a serviço da inovação em gestão pública.',
+      publication: 'Brasília, DF: Enap, 2026. p. 216–231.',
+      access: '24 nov. 2026.'
+    },
+    note: 'A reprodução integral depende de acesso autorizado aos microdados do CAF.',
+    cardLinkCount: 2,
+    links: [
+      ['Ler capítulo', 'https://repositorio.enap.gov.br/handle/1/10139'],
+      ['Código', 'https://github.com/marcelo7bastos/artigo-pu-learning']
+    ]
+  },
   {id:'chat-pronaf',category:'ia',title:'Uma pergunta pode abrir o caminho.',name:'Chat Pronaf v1',tag:'IA & AGRICULTURA FAMILIAR',status:'Chatbot · 2025 · Protótipo',art:'chat',featured:true,summary:'Uma experiência conversacional para aproximar perguntas e informações sobre o Pronaf.',lead:'E se explorar informação sobre crédito rural começasse com uma conversa?',context:'O projeto de 2025 explora a interação em linguagem natural para consultar informações relacionadas ao Pronaf e à agricultura familiar.',contribution:'Exploração de uma interface conversacional e do caminho entre pergunta, fonte e apresentação da informação.',learning:'Uma resposta útil depende tanto de uma boa interface quanto da clareza sobre a origem e os limites da informação.',note:'O protótipo foi desenvolvido com dados oficiais do Banco Central e documentos complementares. Se o Streamlit mostrar a tela de inatividade, use o botão da plataforma para reativar o app.',links:[['Abrir protótipo v1','https://chat-pronaf-v1.streamlit.app/'],['Código da v1','https://github.com/marcelo7bastos/chat-pronaf-v1']]},
-  {id:'oficina',category:'aprender',title:'Conhecimento bom circula.',name:'Hackeando o Pronaf',tag:'SEMANA DE INOVAÇÃO · ENAP',status:'Oficina · Semana de Inovação · 2025',art:'workshop',featured:true,summary:'Dados abertos, Python e IA em uma oficina para explorar o crédito rural.',lead:'Compartilhar o caminho também faz parte de construir.',context:'Oficina apresentada na Semana de Inovação da Enap em 2025, reunindo exploração de dados abertos, programação e inteligência artificial.',contribution:'Preparação e apresentação da oficina com Ernesto Galindo, aproximando perguntas sobre o Pronaf de exercícios e ferramentas de análise.',learning:'Ensinar exige tornar decisões visíveis: de onde vêm os dados, o que perguntar e como conferir a resposta.',note:'A oficina é um trabalho colaborativo. Os materiais externos mantêm seus próprios créditos e contexto.',links:[['Materiais públicos da oficina','https://github.com/marcelo7bastos/semana_inovacao_enap_2025']]},
+  {id:'oficina',category:'aprender',title:'Conhecimento bom circula.',name:'Hackeando o Pronaf',tag:'SEMANA DE INOVAÇÃO · ENAP',status:'Oficina · 2025',result:'Apresentado na Semana de Inovação Enap 2025.',art:'workshop',featured:true,summary:'Dados abertos, Python e IA em uma oficina para explorar o crédito rural.',lead:'Compartilhar o caminho também faz parte de construir.',context:'Oficina apresentada na Semana de Inovação da Enap em 2025, reunindo exploração de dados abertos, programação e inteligência artificial.',contribution:'Preparação e apresentação da oficina com Ernesto Galindo, aproximando perguntas sobre o Pronaf de exercícios e ferramentas de análise.',learning:'Ensinar exige tornar decisões visíveis: de onde vêm os dados, o que perguntar e como conferir a resposta.',note:'A oficina é um trabalho colaborativo. Os materiais externos mantêm seus próprios créditos e contexto.',links:[['Materiais públicos da oficina','https://github.com/marcelo7bastos/semana_inovacao_enap_2025']]},
   {id:'jogos',category:'pessoal',title:'Também construo para brincar.',name:'Jogos de matemática',tag:'PELO PRAZER DE FAZER',status:'Dois jogos publicados',art:'game',featured:true,summary:'Duas pequenas experiências para transformar ideias matemáticas em brincadeira.',lead:'Às vezes, uma boa razão para criar é fazer uma brincadeira para a filha.',context:'Missão Kits da Festa e Tabuada Run exploram matemática com desafios visuais, escolhas e feedback. A motivação é pessoal: aprender e brincar juntos.',contribution:'Construção das experiências, das regras e das interfaces, usando programação para tornar o raciocínio visível.',learning:'Uma explicação melhora quando a outra pessoa pode experimentar a ideia.',note:'A atividade abaixo é uma demonstração independente. Os dois jogos completos estão nos links.',links:[['Missão Kits da Festa','https://marcelo7bastos.github.io/aprendendo-maximo-divisor-comum/'],['Tabuada Run','https://marcelo7bastos.github.io/jogo_tabuada/']]},
-  {id:'iris',category:'ia',name:'Íris',title:'Uma assistente, muitas decisões.',tag:'IA & ROTINAS PESSOAIS',status:'Relato descritivo',summary:'Experimentos com integração, memória e rotinas assistidas por IA.',context:'Um projeto pessoal para explorar o apoio de agentes a rotinas e à organização do conhecimento.',contribution:'Configuração e integração sobre a infraestrutura Hermes, com decisões sobre memória, continuidade e supervisão.',learning:'Automatizar uma rotina inclui pensar em como ela será acompanhada e retomada.',note:'Somente descrição. Sem acesso à assistente, às suas contas, memórias, documentos ou rotinas privadas.'},
+  {id:'iris',category:'ia',name:'Íris',title:'Uma assistente, muitas decisões.',tag:'IA & ROTINAS PESSOAIS',status:'Relato descritivo',summary:'Experimentos com integração, memória e rotinas assistidas por IA.',context:'Um projeto pessoal para explorar o apoio de agentes a rotinas e à organização do conhecimento.',contribution:'Configurei a assistente e integrei fluxos, com decisões sobre memória, continuidade e supervisão.',learning:'Automatizar uma rotina inclui pensar em como ela será acompanhada e retomada.',note:'Somente descrição. Sem acesso à assistente, às suas contas, memórias, documentos ou rotinas privadas.'},
   {id:'time-ti',category:'ia',name:'Time de TI com agentes',title:'Aprender a dirigir a construção.',tag:'IA & PROCESSO DE TRABALHO',status:'Teste / experimento',summary:'Papéis, revisão e acompanhamento no desenvolvimento com agentes.',context:'Um experimento de organização do trabalho de agentes em torno de tarefas e entregas revisáveis.',contribution:'Definição de papéis, fluxos e ferramentas de apoio ao processo de implementação e revisão.',learning:'Delegar execução exige continuar responsável pelas decisões e pela conferência.',note:'Apresentado como teste, com limitações. Não expõe configurações privadas nem promete autonomia garantida.'},
   {id:'eleitoral',category:'dados',name:'Monitor Eleitoral 2026',title:'Dados cívicos, método e contexto.',tag:'DADOS ABERTOS',status:'Projeto encerrado · 2026',summary:'Coleta e organização de dados oficiais em um projeto pessoal independente.',context:'Um exercício de coleta, organização e acompanhamento de dados eleitorais oficiais.',contribution:'Desenvolvimento e análise com colaboração de Ernesto Galindo, preservando origem, referência e registros de execução.',learning:'O contexto e a data de atualização fazem parte de qualquer visualização.',note:'Projeto pessoal independente, encerrado em outubro de 2026. O repositório separa os registros de coleta dos resultados oficiais e o protótipo visual com dados simulados.',links:[['Projeto público no GitHub','https://github.com/marcelo7bastos/monitor-eleitoral-2026']]},
   {id:'alerta',category:'ia',name:'Alerta de Inflação de Alimentos',title:'Um radar para boas perguntas.',tag:'IA & MONITORAMENTO',status:'Projeto em evolução',summary:'Notícias, filtros e classificação para acompanhar um tema.',context:'Uma experiência para organizar notícias relacionadas à inflação de alimentos.',contribution:'Coleta RSS, filtragem, armazenamento e classificação assistida por IA.',learning:'Encontrar uma notícia e produzir um indicador econômico são tarefas distintas.',note:'Descrição do projeto. Sem notícias carregadas, classificações reais ou promessas de recursos futuros já prontos.',links:[['Repositório público','https://github.com/marcelo7bastos/alerta_inflacao']]},
-  {id:'compras',category:'dados',name:'Planejamento de compras públicas',title:'O que os dados abertos deixam perguntar?',tag:'DADOS ABERTOS & GESTÃO',status:'Análise · openDATA 2024',summary:'Exploração de aquisições planejadas em bases PGC/PCA.',context:'Uma análise dos itens e valores previstos no planejamento de compras públicas.',contribution:'Tratamento, exploração e organização dos dados para construção de rankings e comunicação da análise.',learning:'Planejamento de contratação não equivale a despesa executada.',note:'Descrição do trabalho; nenhum dado interno ou registro de pessoa é apresentado.',links:[['Código e materiais públicos','https://github.com/marcelo7bastos/dados_aberto_pgc_pca']]},
+  {id:'compras',category:'dados',name:'Planejamento de compras públicas',title:'O que os dados abertos deixam perguntar?',tag:'DADOS ABERTOS & GESTÃO',status:'Análise',result:'Apresentado no openDATA 2024 da SEGES.',summary:'Exploração de aquisições planejadas em bases PGC/PCA.',context:'Uma análise dos itens e valores previstos no planejamento de compras públicas.',contribution:'Tratamento, exploração e organização dos dados para construção de rankings e comunicação da análise.',learning:'Planejamento de contratação não equivale a despesa executada.',note:'Descrição do trabalho; nenhum dado interno ou registro de pessoa é apresentado.',links:[['Código e materiais públicos','https://github.com/marcelo7bastos/dados_aberto_pgc_pca']]},
   {id:'conversor',category:'dados',name:'Da API à planilha',title:'Uma ferramenta pequena, uma fricção a menos.',tag:'AUTOMAÇÃO PRÁTICA',status:'Trabalho anterior',summary:'Conversor de respostas da API Compras para CSV e Excel.',context:'Levar uma resposta JSON para um formato tabular pode ser uma barreira para começar a análise.',contribution:'Uma aplicação de consulta, prévia e exportação de dados em formatos de planilha.',learning:'Uma solução útil também pode ser pequena e direta.',note:'Relato de um trabalho antigo. A ferramenta não está conectada a nenhuma API neste protótipo.',links:[['Repositório público','https://github.com/marcelo7bastos/api_compras_convert_json_to']]},
   {id:'skill',category:'aprender',name:'explicar-conteudo',title:'Um jeito de aprender que vira ferramenta.',tag:'APRENDIZAGEM & IA',status:'Skill criada',summary:'Um fluxo para explorar temas por perguntas, texto e recursos visuais.',context:'Nem toda explicação precisa começar pelo mesmo formato. Algumas ideias pedem perguntas; outras, um desenho ou uma experiência.',contribution:'Organização de um método reutilizável para explorar conteúdos e escolher formas de explicação.',learning:'Uma boa ferramenta também ajuda a formular melhor a pergunta.',note:'Descrição do método. Não afirma resultados de eficácia ou publica a biblioteca privada.'},
   {id:'trilhas',category:'aprender',name:'Trilhas de IA para servidores',title:'Aprender com um caminho em mente.',tag:'CURADORIA & FORMAÇÃO',status:'Curadoria pública',summary:'Curadoria de formação organizada pelas necessidades de pessoas e equipes.',context:'A quantidade de cursos torna importante conectar formação a contexto e objetivo.',contribution:'Curadoria independente de cursos e percursos ligados à EV.G/Enap.',learning:'Uma trilha começa com a pergunta: o que a pessoa precisa conseguir fazer?',note:'Curadoria independente, sem caráter oficial da Enap ou da EV.G. O aprimoramento do projeto ainda está em definição.',links:[['Guia público','https://github.com/marcelo7bastos/trilhas-ia-enap']]},
@@ -41,7 +71,7 @@ function externalLinks(links) {
 }
 
 function card(project) {
-  const linkCount = ['inflacao', 'jogos'].includes(project.id) ? 2 : 1;
+  const linkCount = project.cardLinkCount ?? (['inflacao', 'jogos'].includes(project.id) ? 2 : 1);
   const links = project.links?.slice(0, linkCount) || [];
   return '<article class="project-card">' +
     '<div class="project-art">' + graphic(project.art) +
@@ -49,6 +79,7 @@ function card(project) {
     '<div class="project-card-copy"><div class="project-kicker">' + esc(project.tag) + '</div>' +
     '<h3>' + esc(project.name) + '</h3><p class="project-subtitle">' + esc(project.title) + '</p>' +
     '<p>' + esc(project.summary) + '</p><span class="project-status">' + esc(project.status) + '</span>' +
+    resultMarkup(project) +
     '<div class="project-actions">' + externalLinks(links) +
     '<button type="button" data-project="' + esc(project.id) + '">Ver detalhes<span class="sr-only"> de ' + esc(project.name) + '</span></button>' +
     '</div></div></article>';
@@ -57,7 +88,7 @@ function card(project) {
 function smallCard(project) {
   return '<button type="button" class="archive-item" data-project="' + esc(project.id) +
     '"><span aria-hidden="true">↳</span><div><h3>' + esc(project.name) + '</h3><p>' + esc(project.status) +
-    '</p></div><span aria-hidden="true">→</span></button>';
+    '</p>' + resultMarkup(project) + '</div><span aria-hidden="true">→</span></button>';
 }
 function renderProjects(){
  const list=projects.filter(p=>selectedFilter==='todos'||p.category===selectedFilter),high=featuredOrder.map(id=>list.find(p=>p.id===id)).filter(Boolean),others=list.filter(p=>!p.featured);
@@ -76,9 +107,46 @@ function showDialog(content){
 }
 function closeDialog(){dialog.close();document.body.classList.remove('body-dialog-open');lastFocus?.focus();}
 function gameMarkup(){return `<div class="demo-console"><p class="eyebrow">UMA MINI BRINCADEIRA PARA EXPERIMENTAR</p><h3>Vamos montar kits iguais?</h3><p>Temos <strong>12 flores</strong> e <strong>18 doces</strong>. Qual é o maior número de kits iguais que podemos montar, usando tudo?</p><div class="game-objects" aria-hidden="true">✿ ✿ ✿ ✿ ✿ ✿<br>✿ ✿ ✿ ✿ ✿ ✿<br>● ● ● ● ● ● ● ● ●<br>● ● ● ● ● ● ● ● ●</div><div class="game-options" role="group" aria-label="Escolha a quantidade de kits"><button data-answer="2">2 kits</button><button data-answer="3">3 kits</button><button data-answer="6">6 kits</button></div><p class="game-feedback" id="game-feedback" aria-live="polite">Experimente uma resposta. O raciocínio importa tanto quanto acertar.</p></div>`;}
-function showProject(id){
- const p=projects.find(p=>p.id===id);if(!p)return;
- showDialog(`<article class="dialog-content">${p.art?`<div class="dialog-art project-art"><span class="art-caption">ILUSTRAÇÃO CONCEITUAL</span>${graphic(p.art)}</div>`:''}<p class="eyebrow">${p.tag}</p><h2 id="dialog-title">${p.name}</h2><p class="dialog-lead">${p.lead||p.title}</p><div class="dialog-meta">${p.status}</div><p class="dialog-text">${p.context}</p><div class="dialog-columns"><section><h3>Minha contribuição</h3><p>${p.contribution}</p></section><section><h3>O que levo comigo</h3><p>${p.learning}</p></section></div>${p.id==='jogos'?gameMarkup():''}<div class="dialog-privacy">${p.note}</div>${p.links?`<div class="dialog-links">${externalLinks(p.links)}</div>`:''}</article>`);
+
+function resultMarkup(project) {
+  return project.result ? '<p class="project-result"><strong>Resultado.</strong> ' + esc(project.result) + '</p>' : '';
+}
+
+function formatCitation(citation, chapterUrl) {
+  return '<section class="dialog-section article-citation" aria-labelledby="citation-title">' +
+    '<h3 id="citation-title">Como citar (ABNT)</h3><p>' + esc(citation.chapter) +
+    ' In: ' + esc(citation.editors) + ' <cite>' + esc(citation.book) + '</cite> ' +
+    esc(citation.publication) + ' Disponível em: <a href="' + esc(chapterUrl) + '">' +
+    esc(chapterUrl) + '</a>. Acesso em: ' + esc(citation.access) + '</p></section>';
+}
+
+function articleDetails(project) {
+  const detail = '<div class="dialog-columns">' +
+    '<section><h3>Minha contribuição</h3><p>' + esc(project.contribution) + '</p></section>' +
+    '<section><h3>' + (project.method ? 'Método' : 'O que levo comigo') + '</h3><p>' +
+    esc(project.method || project.learning) + '</p></section></div>';
+  if (!project.citation) return detail;
+  return detail +
+    '<section class="dialog-section"><h3>O que o estudo encontrou</h3><p>' + esc(project.finding) + '</p></section>' +
+    '<p><strong>Orientação.</strong> ' + esc(project.advisor) + '</p>' +
+    formatCitation(project.citation, project.links[0][1]);
+}
+
+function showProject(id) {
+  const project = projects.find(item => item.id === id);
+  if (!project) return;
+
+  const illustration = project.art && !project.citation
+    ? '<div class="dialog-art project-art"><span class="art-caption">ILUSTRAÇÃO CONCEITUAL</span>' + graphic(project.art) + '</div>'
+    : '';
+  const links = project.links ? '<div class="dialog-links">' + externalLinks(project.links) + '</div>' : '';
+  showDialog('<article class="dialog-content">' + illustration +
+    '<p class="eyebrow">' + esc(project.tag) + '</p><h2 id="dialog-title">' + esc(project.name) + '</h2>' +
+    '<p class="dialog-lead">' + esc(project.lead || project.title) + '</p>' +
+    '<div class="dialog-meta">' + esc(project.status) + '</div>' + resultMarkup(project) +
+    '<p class="dialog-text">' + esc(project.context) + '</p>' + articleDetails(project) +
+    (project.id === 'jogos' ? gameMarkup() : '') +
+    '<div class="dialog-privacy">' + esc(project.note) + '</div>' + links + '</article>');
 }
 function showCategory(id){
  const c=categories[id];if(!c)return;

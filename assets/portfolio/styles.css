@@ -109,3 +109,16 @@ dialog{width:min(790px,calc(100vw - 35px));max-height:88vh;padding:0;background:
   .site-header nav { grid-row: 2; grid-column: 1 / -1; flex-wrap: wrap; gap: 12px 19px; }
   .contact-link { grid-row: 1; grid-column: 2; justify-self: end; }
 }
+
+#project-dialog:modal { overscroll-behavior: contain; }
+#project-dialog::backdrop { background: #18282099; }
+
+.project-card .project-result, .archive-item .project-result {
+  margin: 6px 0 0;
+  color: var(--ink);
+  font-size: 12px;
+  line-height: 1.5;
+}
+.dialog-section { margin: 25px 0 18px; }
+.dialog-section h3 { font: 24px var(--serif); margin: 0 0 8px; }
+.article-citation a { overflow-wrap: anywhere; }
