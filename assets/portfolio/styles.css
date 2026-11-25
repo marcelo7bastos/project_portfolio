@@ -182,10 +182,3 @@ dialog{width:min(790px,calc(100vw - 35px));max-height:88vh;padding:0;background:
   object-fit: contain;
   background: #f3f5ee;
 }
-
-.visit-counter {
-  margin-block: 16px 0;
-  color: #b8c3ad;
-  font: 10px/1.5 var(--mono);
-}
-.visit-counter span { margin-inline-start: 6px; color: var(--paper); }
